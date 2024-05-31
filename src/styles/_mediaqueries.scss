@@ -1,0 +1,12 @@
+$breakpoints: (
+  mobile: 425px,
+  tablet: 768px,
+  desktop: 1024px,
+  wide: 1440px,
+) !default;
+
+@use '../../node_modules/sass-mq/mq' with (
+  $breakpoints: $breakpoints
+);
+
+@import '../../node_modules/sass-mq/mq';

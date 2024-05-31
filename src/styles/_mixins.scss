@@ -1,0 +1,33 @@
+@import './_variables.scss';
+
+// Mixin pour les titres
+@mixin heading($size) {
+  font-size: map-get($heading-font-size, $size);
+}
+
+// Mixin pour les textes
+@mixin text($size) {
+  font-size: map-get($text-font-size, $size);
+}
+
+@mixin button($color, $bgColor, $colorHover, $bgColorHover) {
+  color: $color;
+  background-color: $bgColor;
+
+  &:hover {
+    color: $colorHover;
+    background-color: $bgColorHover;
+  }
+}
+
+@mixin buttonPrimary() {
+  @include button($white-color, $primary-color, $white-color, $secondary-color);
+}
+
+@mixin buttonSecondary() {
+  @include button($primary-color, $white-color, $white-color, $black-color);
+}
+
+@mixin buttonTertiary() {
+  @include button($darkGrey-color, 'none', $black-color, $nude-color);
+}

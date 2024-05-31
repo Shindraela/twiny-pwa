@@ -1,0 +1,42 @@
+@import './fonts';
+
+$heading-font-size: (
+  mobileH1: 4.8rem,
+  mobileH2: 3.2rem,
+  mobileH3: 2.4rem,
+  mobileH4: 1.8rem,
+  desktopH1: 6.8rem,
+  desktopH2: 4.2rem,
+  desktopH3: 3.2rem,
+  desktopH4: 2.4rem,
+);
+
+$text-font-size: (
+  mobileSmall: 1.4rem,
+  mobileMedium: 1rem,
+  mobileLarge: 1.6rem,
+  desktopSmall: 1.6rem,
+  desktopMedium: 1.2rem,
+  desktopLarge: 1.8rem,
+);
+
+$font-mono: 'poppins-regular', sans-serif;
+$font-bold: 'poppins-bold', sans-serif;
+
+$white-color: #ffffff;
+$black-color: #121212;
+$lightGrey-color: #e8eaee;
+$darkGrey-color: #80848a;
+
+$primary-color: #ffa503;
+$secondary-color: #ffc62a;
+$tertiary-color: #5c0099;
+
+$violet-color: #ddb4ff;
+$pink-color: #fd336c;
+$cream-color: #f9dbd1;
+$nude-color: #fee5cf;
+
+$button-borderRadius: 5rem;
+$button-fontSizeMobile: 1.6rem;
+$button-fontSizeDesktop: 1.8rem;

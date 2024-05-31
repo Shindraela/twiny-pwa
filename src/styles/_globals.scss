@@ -1,0 +1,112 @@
+@import './reset', './import';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.3;
+  font-family: $font-mono;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  width: inherit;
+  height: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Tailles des titres
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-bold;
+}
+
+h1 {
+  @include heading(mobileH1);
+
+  @include mq($from: desktop) {
+    @include heading(desktopH1);
+  }
+}
+
+h2 {
+  @include heading(mobileH2);
+
+  @include mq($from: desktop) {
+    @include heading(desktopH2);
+  }
+}
+
+h3 {
+  @include heading(mobileH3);
+
+  @include mq($from: desktop) {
+    @include heading(desktopH3);
+  }
+}
+
+h4 {
+  @include heading(mobileH4);
+
+  @include mq($from: desktop) {
+    @include heading(desktopH4);
+  }
+}
+
+p,
+span {
+  @include text(mobileSmall);
+
+  @include mq($from: desktop) {
+    @include text(desktopLarge);
+  }
+}
+
+button {
+  font-family: $font-bold;
+  font-size: $button-fontSizeMobile;
+  border-radius: $button-borderRadius;
+  padding: 1.95rem 3.2rem;
+  text-align: center;
+
+  @include mq($from: desktop) {
+    font-size: $button-fontSizeDesktop;
+    padding: 1.6rem 3.2rem;
+  }
+
+  &:hover {
+    transition: all 0.3s ease;
+
+    &:disabled,
+    &[disabled] {
+      color: $lightGrey-color;
+      background-color: $darkGrey-color;
+    }
+  }
+
+  &:disabled,
+  &[disabled] {
+    color: $lightGrey-color;
+    background-color: $darkGrey-color;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  left: -9999rem;
+  height: 0;
+  width: 0;
+}
