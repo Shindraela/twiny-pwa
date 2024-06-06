@@ -25,7 +25,8 @@
 }
 
 @mixin buttonSecondary() {
-  @include button($primary-color, $white-color, $white-color, $black-color);
+  @include button($primary-color, $white-color, $white-color, $secondary-color);
+  border: .1rem solid $primary-color;
 }
 
 @mixin buttonTertiary() {

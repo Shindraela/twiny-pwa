@@ -11,12 +11,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 100vh;
   }
 
   &Logo {
-    width: 100%;
-    max-width: 48.9rem;
     height: auto;
+
+    @media (max-width: 389px) {
+      max-width: 24rem;
+    }
+
+    @media (min-width: 390px) {
+      max-width: 36rem;
+    }
+
+    @media (min-width: 767px) {
+      width: 100%;
+      max-width: 48.9rem;
+    }
 
     @media (prefers-reduced-motion: no-preference) {
       animation: splashscreen-float infinite 3s ease-in-out;
@@ -28,12 +40,10 @@
   }
 
   &Title {
-    background: linear-gradient(
-      to right,
-      #41279b 0%,
-      #fd336c 50%,
-      #ffa503 100%
-    );
+    background: linear-gradient(to right,
+        #41279b 0%,
+        #fd336c 50%,
+        #ffa503 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -59,11 +69,20 @@
     height: 5rem;
     border-radius: 47%;
     background-color: $primary-color;
-    margin-top: 4.8rem;
     margin-left: auto;
+    cursor: pointer;
+
+    @include mq($from: desktop) {
+      margin-top: 4.8rem;
+    }
 
     &:hover {
       background-color: $secondary-color;
+    }
+
+    &Controls {
+      display: flex;
+      flex-direction: column;
     }
 
     &Arrow {
@@ -71,6 +90,33 @@
       width: $arrowSize;
       height: $arrowSize;
     }
+
+    &CreateAccount {
+      @include buttonPrimary();
+    }
+
+    &AccountAlreadyExists {
+      @include buttonSecondary();
+      margin-top: 2.4rem;
+    }
+
+    &Links {
+      margin-top: 3.2rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &Link {
+      @include text(mobileSmall);
+    }
+  }
+
+  &BottomContent {
+    position: relative;
+    margin-top: 1.8rem;
+
+    display: flex;
+    flex-direction: column;
   }
 }
 
