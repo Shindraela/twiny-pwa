@@ -24,19 +24,11 @@ button {
 }
 
 input {
-  border: 0;
   font-size: inherit;
   font-family: inherit;
 
   &:focus {
     outline: 0.2rem solid var(--defaultInput-outlineColor);
-  }
-
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 3rem white inset !important;
   }
 }
 

@@ -1,0 +1,140 @@
+@import '../../styles/import';
+
+.login {
+  $backgroundGradientFirstColor: #DDB4FF;
+  $backgroundGradientSecondColor: #F9DBD1;
+
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4.8rem 0;
+  position: relative;
+  background: radial-gradient(circle, rgba($backgroundGradientFirstColor, 1) 0%, rgba($backgroundGradientSecondColor, 1) 100%);
+
+  &Content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-height: 55.5rem;
+    height: 100%;
+  }
+
+  &Title {
+    @include heading(mobileH3);
+    background: linear-gradient(to right, #41279B 0%, #FD336C 30%, #FFA503 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &Logo {
+    width: 21.1rem;
+    height: 8.2rem;
+    background-image: url('/img/logo.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex: auto;
+  }
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem;
+  width: 25.8rem;
+  max-height: 24.8rem;
+  width: 100%;
+  flex: auto;
+
+  @include mq($from: mobile) {
+    width: 32.8rem;
+  }
+
+  &Input {
+    border-radius: 0.8rem;
+    border: 0.1rem solid $tertiary-color;
+    width: 100%;
+    padding: 1.2rem 1.6rem 1.4rem;
+    font-size: 1.4rem;
+    background: transparent;
+    color: $tertiary-color;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 3rem transparent inset !important;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-text-fill-color: $tertiary-color !important;
+    }
+
+    &#{&}--error {
+      border-color: red;
+    }
+  }
+
+  &Label {
+    display: block;
+    position: relative;
+    font-size: 1.4rem;
+    color: $tertiary-color;
+    width: 100%;
+  }
+
+  &Placeholder {
+    position: absolute;
+    left: 1.2rem;
+    top: 1.3rem;
+    padding: 0 0.5rem;
+    transform: translateY(0);
+    transform-origin: 0 0;
+    pointer-events: none;
+    transition: transform ease 0.3s;
+    color: $tertiary-color;
+
+    @at-root .FormInput:not(:placeholder-shown)+&,
+    .FormInput:focus+& {
+      transform: translateY(-3rem) scale(0.8);
+    }
+  }
+
+  &Submit {
+    @include buttonPrimary();
+  }
+
+  &Error {
+    &Input {
+      border: .1rem solid red;
+    }
+
+    &Text {
+      color: red;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+.ForgotPassword {
+  @include text(mobileSmall);
+  position: absolute;
+  bottom: 1rem;
+  color: $tertiary-color;
+
+  @include mq($from: mobile) {
+    bottom: 4.8rem;
+  }
+}
