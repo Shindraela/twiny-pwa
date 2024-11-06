@@ -1,5 +1,14 @@
 @import './fonts';
 
+$breakpoints: (
+  mobile-xs: 375px,
+  mobile: 576px,
+  tablet: 768px,
+  desktop: 1024px,
+  desktop-lg: 1440px,
+  desktop-xl: 1920px,
+);
+
 $heading-font-size: (
   mobileH1: 4.8rem,
   mobileH2: 3.2rem,
@@ -40,3 +49,6 @@ $nude-color: #fee5cf;
 $button-borderRadius: 5rem;
 $button-fontSizeMobile: 1.6rem;
 $button-fontSizeDesktop: 1.8rem;
+
+$modal-borderRadius: 1.6rem;
+$input-borderRadius: 4rem;

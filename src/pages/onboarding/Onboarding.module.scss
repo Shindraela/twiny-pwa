@@ -1,6 +1,6 @@
 @import '../../styles/import';
 
-.onboarding {
+.Onboarding {
   width: inherit;
   height: inherit;
   position: relative;
@@ -12,10 +12,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   &Logo {
     height: auto;
+    margin-top: 2rem;
 
     @media (max-width: 389px) {
       max-width: 24rem;
@@ -40,10 +44,12 @@
   }
 
   &Title {
-    background: linear-gradient(to right,
-        #41279b 0%,
-        #fd336c 50%,
-        #ffa503 100%);
+    background: linear-gradient(
+      to right,
+      #41279b 0%,
+      #fd336c 50%,
+      #ffa503 100%
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -111,9 +117,14 @@
     }
   }
 
+  &TopContent {
+    flex: 1 1 auto;
+  }
+
   &BottomContent {
     position: relative;
     margin-top: 1.8rem;
+    flex: 1 1 auto;
 
     display: flex;
     flex-direction: column;

@@ -1,0 +1,215 @@
+@import '../../styles/import';
+
+.Signup {
+  width: inherit;
+  height: inherit;
+  position: relative;
+  margin: 0 auto;
+
+  &Content {
+    margin: 1.2rem 1.6rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &Step {
+    margin-top: 5rem;
+    flex-grow: 1;
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
+
+    @include mq($from: desktop) {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    &Title {
+      background: linear-gradient(
+        to right,
+        #41279b 0%,
+        #fd336c 50%,
+        #ffa503 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &Subtitle {
+      margin-top: 1.6rem;
+      margin-bottom: 3.2rem;
+      @include text(mobileSmall);
+
+      @include breakpoint(desktop-lg) {
+        @include text(desktopSmall);
+      }
+    }
+
+    &Text {
+      margin-top: 2.4rem;
+      color: $darkGrey-color;
+
+      span:nth-child(3) {
+        font-family: $font-bold;
+        display: block;
+        margin-top: 0.5rem;
+      }
+    }
+
+    &Span {
+      color: $darkGrey-color;
+    }
+
+    &Info {
+      @include text(mobileSmall);
+      margin: 0 auto 2.4rem;
+      color: $darkGrey-color;
+
+      @include breakpoint(desktop-lg) {
+        @include text(desktopSmall);
+      }
+    }
+  }
+
+  &Button {
+    &Disabled {
+      color: red;
+    }
+
+    &BackIcon {
+      cursor: pointer;
+    }
+
+    &Next {
+      @include buttonPrimary();
+      margin-bottom: 9vh;
+
+      @include mq($from: desktop) {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+.privacy {
+  text-align: center;
+
+  &Icon {
+    margin-bottom: 4rem;
+  }
+
+  &Text {
+    text-align: left;
+    margin-top: 3.2rem;
+  }
+}
+
+.rules {
+  text-align: left;
+
+  &Description {
+    &Title {
+      margin-bottom: 1.6rem;
+      font-family: $font-bold;
+      @include text(mobileLarge);
+
+      @include breakpoint(desktop-lg) {
+        @include text(desktopLarge);
+      }
+    }
+
+    &Subtitle {
+      margin-bottom: 2.4rem;
+      @include text(mobileSmall);
+
+      @include breakpoint(desktop-lg) {
+        @include text(desktopSmall);
+      }
+    }
+  }
+}
+
+// FIRSTNAME STEP
+.Firstname {
+  &Input {
+    margin-top: 8.2rem;
+    max-width: 35rem;
+    width: 100%;
+    border: 0;
+    border-bottom: 0.1rem solid $darkGrey-color;
+    padding: 0.5rem 0;
+  }
+}
+
+// PROFILE PICTURE STEP
+.ProfilePicture {
+  &UploadContainer {
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 2rem auto;
+  }
+
+  &Preview {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+}
+
+// BIRTHDATE STEP
+.Birthdate {
+  &Digits {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+
+  &Input {
+    max-width: 1.3rem;
+    border: none;
+    border-bottom: 0.1rem solid black;
+  }
+}
+
+// GENDER STEP
+.Gender {
+  &Options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.8rem;
+    margin-top: 8.2rem;
+  }
+
+  &Input {
+    @include text(mobileLarge);
+    border-radius: $input-borderRadius;
+    padding: 1.9rem 0;
+    border: 0.1rem solid $black-color;
+
+    color: $black-color;
+    background-color: $white-color;
+
+    &:active,
+    &:focus,
+    &Selected {
+      font-family: $font-bold;
+      border: none;
+
+      color: $white-color;
+      background-color: $pink-color;
+    }
+  }
+}

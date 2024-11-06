@@ -33,35 +33,35 @@ export const Onboarding = () => {
   const loginIssues = () => console.log('loginIssues')
 
   return (
-    <div className={styles.onboarding}>
-      <header className={styles.onboardingHeader}>
-        <div className={styles.onboardingTopContent}>
+    <div className={styles.Onboarding}>
+      <header className={styles.OnboardingHeader}>
+        <div className={styles.OnboardingTopContent}>
           <img
             src={splashscreen}
-            className={styles.onboardingLogo}
+            className={styles.OnboardingLogo}
             alt="Splashscreen Twiny"
           />
 
-          <div className={styles.onboardingText}>
-            <h2 className={styles.onboardingTitle}>Bienvenue sur Twiny</h2>
-            <p className={styles.onboardingSubtitle}>
+          <div className={styles.OnboardingText}>
+            <h2 className={styles.OnboardingTitle}>Bienvenue sur Twiny</h2>
+            <p className={styles.OnboardingSubtitle}>
               Une safe space où tu pourras créer de nouvelles amitiés !
             </p>
           </div>
         </div>
 
-        <div className={styles.onboardingBottomContent}>
+        <div className={styles.OnboardingBottomContent}>
           {transitions((style, item) => {
             return item === 1 ? (
               <animated.div style={style}>
                 <a
-                  className={styles.onboardingButton}
+                  className={styles.OnboardingButton}
                   role="button"
                   onClick={() => setPage(2)}
                 >
                   <img
                     src={right_arrow}
-                    className={styles.onboardingButtonArrow}
+                    className={styles.OnboardingButtonArrow}
                     alt="Bouton suivant"
                   />
                 </a>
@@ -69,25 +69,25 @@ export const Onboarding = () => {
             ) : (
               <animated.div
                 style={style}
-                className={styles.onboardingButtonControls}
+                className={styles.OnboardingButtonControls}
               >
                 <button
-                  className={styles.onboardingButtonCreateAccount}
+                  className={styles.OnboardingButtonCreateAccount}
                   onClick={createAccount}
                 >
                   Créer un compte
                 </button>
 
                 <button
-                  className={styles.onboardingButtonAccountAlreadyExists}
+                  className={styles.OnboardingButtonAccountAlreadyExists}
                   onClick={login}
                 >
                   Déjà un compte ? Se connecter
                 </button>
 
-                <div className={styles.onboardingButtonLinks}>
+                <div className={styles.OnboardingButtonLinks}>
                   <a
-                    className={styles.onboardingButtonLink}
+                    className={styles.OnboardingButtonLink}
                     role="button"
                     onClick={() => setPage(1)}
                   >
@@ -95,7 +95,7 @@ export const Onboarding = () => {
                   </a>
 
                   <a
-                    className={styles.onboardingButtonLink}
+                    className={styles.OnboardingButtonLink}
                     role="button"
                     onClick={loginIssues}
                   >

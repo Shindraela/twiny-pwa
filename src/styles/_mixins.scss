@@ -1,5 +1,26 @@
 @import './_variables.scss';
 
+// Fonction pour générer les media queries
+@function media-query($breakpoint) {
+  $breakpoint-values: (
+    'mobile-xs': '(min-width: 375px)',
+    'mobile': '(min-width: 576px)',
+    'tablet': '(min-width: 768px)',
+    'desktop': '(min-width: 1024px)',
+    'desktop-lg': '(min-width: 1440px)',
+    'desktop-xl': '(min-width: 1920px)',
+  );
+
+  @return map-get($breakpoint-values, $breakpoint);
+}
+
+// Mixin pour les breakpoints
+@mixin breakpoint($breakpoint) {
+  @media #{media-query($breakpoint)} {
+    @content;
+  }
+}
+
 // Mixin pour les titres
 @mixin heading($size) {
   font-size: map-get($heading-font-size, $size);
@@ -26,7 +47,7 @@
 
 @mixin buttonSecondary() {
   @include button($primary-color, $white-color, $white-color, $secondary-color);
-  border: .1rem solid $primary-color;
+  border: 0.1rem solid $primary-color;
 }
 
 @mixin buttonTertiary() {

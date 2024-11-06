@@ -1,8 +1,8 @@
 @import '../../styles/import';
 
 .login {
-  $backgroundGradientFirstColor: #DDB4FF;
-  $backgroundGradientSecondColor: #F9DBD1;
+  $backgroundGradientFirstColor: #ddb4ff;
+  $backgroundGradientSecondColor: #f9dbd1;
 
   width: inherit;
   height: inherit;
@@ -12,7 +12,11 @@
   flex-direction: column;
   padding: 4.8rem 0;
   position: relative;
-  background: radial-gradient(circle, rgba($backgroundGradientFirstColor, 1) 0%, rgba($backgroundGradientSecondColor, 1) 100%);
+  background: radial-gradient(
+    circle,
+    rgba($backgroundGradientFirstColor, 1) 0%,
+    rgba($backgroundGradientSecondColor, 1) 100%
+  );
 
   &Content {
     display: flex;
@@ -25,7 +29,7 @@
 
   &Title {
     @include heading(mobileH3);
-    background: linear-gradient(to right, #41279B 0%, #FD336C 30%, #FFA503 70%);
+    background: linear-gradient(to right, #41279b 0%, #fd336c 30%, #ffa503 70%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -105,8 +109,8 @@
     transition: transform ease 0.3s;
     color: $tertiary-color;
 
-    @at-root .FormInput:not(:placeholder-shown)+&,
-    .FormInput:focus+& {
+    @at-root .FormInput:not(:placeholder-shown) + &,
+      .FormInput:focus + & {
       transform: translateY(-3rem) scale(0.8);
     }
   }
@@ -117,7 +121,7 @@
 
   &Error {
     &Input {
-      border: .1rem solid red;
+      border: 0.1rem solid red;
     }
 
     &Text {

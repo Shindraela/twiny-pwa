@@ -1,0 +1,46 @@
+@import '../../styles/import';
+
+.ConfirmModal {
+  &Content {
+    padding: 4.8rem 2.4rem;
+  }
+
+  &Image {
+    max-height: 3.4rem;
+  }
+
+  &Title {
+    font-size: 1.8rem;
+    margin: 1.6rem 0;
+  }
+
+  &Message {
+    @include text(mobileLarge);
+    color: $darkGrey-color;
+  }
+
+  &Body {
+    margin-bottom: 2rem;
+  }
+
+  &Buttons {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 24.2rem;
+    text-align: center;
+    text-align: center;
+    margin: 2.4rem auto 0;
+
+    button {
+      &:first-child {
+        @include buttonPrimary();
+      }
+
+      &:last-child {
+        color: $darkGrey-color;
+      }
+    }
+  }
+}
