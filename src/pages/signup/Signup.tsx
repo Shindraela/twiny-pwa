@@ -10,9 +10,13 @@ import { Firstname } from './Settings/Firstname'
 import { ProfilePicture } from './Settings/ProfilePicture'
 import { Birthdate } from './Settings/Birthdate'
 import { Gender } from './Settings/Gender'
+import { Preferences } from './Settings/Preferences'
 
 import styles from './Signup.module.scss'
 import back_arrow from '/img/back_arrow.svg'
+import { Distance } from './Settings/Distance'
+import { Hobbies } from './Settings/Hobbies'
+import { FinishModal } from './FinishModal'
 
 export const Signup = () => {
   const navigate = useNavigate()
@@ -20,17 +24,20 @@ export const Signup = () => {
   const [isNextButtonDisabled, setIsNextButtonDisabled] =
     useState<boolean>(false)
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false)
+  const [isFinishModalOpen, setIsFinishModalOpen] = useState<boolean>(false)
   const [infoText, setInfoText] = useState<{
     text: string
     showCheckbox: boolean
   }>({ text: '', showCheckbox: false })
   const [data, setData] = useState({
-    name: '',
+    firstname: '',
     picture: null as File | null,
     gender: '',
     showGender: false,
     birthdate: '',
-    preferences: '',
+    preference: '',
+    distance: '',
+    hobbies: []
   })
   const [isGenderVisible, setIsGenderVisible] = useState<boolean>(false)
 
@@ -57,31 +64,20 @@ export const Signup = () => {
   }
 
   const handleChange = (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.MouseEvent<HTMLInputElement>
-      | string
+    event: string | boolean | File | string[],
+    name: string
   ) => {
-    if (typeof event === 'string') {
-      // Gender change
-      setData((prevData) => ({
-        ...prevData,
-        gender: event,
-      }))
-    } else {
-      const target = event.target as HTMLInputElement
-      const value = target.type === 'checkbox' ? target.checked : target.value
-      const name = target.name
+    let value: string | boolean | File | string[] = event
 
-      setData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }))
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
 
-      // If it's checkbox from gender step, update infoText
-      if (name === 'showGender') {
-        updateInfoText(infoText.text, value as boolean)
-      }
+    if (name === 'showGender') {
+      const checked = value as boolean
+      setIsGenderVisible(checked)
+      updateInfoText(infoText.text, checked)
     }
   }
 
@@ -99,8 +95,6 @@ export const Signup = () => {
     }))
   }
 
-  const handleCheckboxChange = (checked: boolean) => setIsGenderVisible(checked)
-
   const currentNextButtonText =
     activeTab === 0 ? 'Je consens' : activeTab === 1 ? "J'accepte" : 'Suivant'
 
@@ -111,6 +105,9 @@ export const Signup = () => {
     <ProfilePicture data={data} handleFileChange={handleFileChange} />,
     <Birthdate data={data} handleBirthdateChange={handleBirthdateChange} />,
     <Gender data={data} handleChange={handleChange} />,
+    <Preferences data={data} handleChange={handleChange} />,
+    <Distance data={data} handleChange={handleChange} />,
+    <Hobbies data={data} handleChange={handleChange} />,
   ]
 
   const updateNextButtonState = useCallback(() => {
@@ -120,7 +117,7 @@ export const Signup = () => {
         setIsNextButtonDisabled(false)
         break
       case 2: // Firstname
-        setIsNextButtonDisabled(data.name.trim() === '')
+        setIsNextButtonDisabled(!data.firstname)
         break
       case 3: // Profile
         updateInfoText('Tu pourras la changer plus tard dans ton profil')
@@ -133,8 +130,15 @@ export const Signup = () => {
         updateInfoText('Afficher mon sexe sur le profil', true)
         setIsNextButtonDisabled(!data.gender)
         break
-      case 6: // WantToMeet
-        setIsNextButtonDisabled(!data.preferences)
+      case 6: // Preferences
+        setIsNextButtonDisabled(!data.preference)
+        break
+      case 7: // Distance
+        updateInfoText('Tu pourras changer tes préférences plus tard dans tes paramètres')
+        setIsNextButtonDisabled(!data.distance)
+        break
+      case 8: // Hobbies
+        setIsNextButtonDisabled(!data.hobbies)
         break
       default:
         setIsNextButtonDisabled(false)
@@ -145,6 +149,8 @@ export const Signup = () => {
   const handleNextButtonClick = () => {
     if (activeTab === 2) {
       setIsConfirmModalOpen(true)
+    } else if (activeTab === 8) {
+      setIsFinishModalOpen(true)
     } else {
       setActiveTab(activeTab + 1)
     }
@@ -157,6 +163,10 @@ export const Signup = () => {
 
   const handleCancel = () => {
     setIsConfirmModalOpen(false)
+  }
+
+  const handleFinish = () => {
+    setIsFinishModalOpen(false)
   }
 
   const goBack = () =>
@@ -205,7 +215,7 @@ export const Signup = () => {
               type="checkbox"
               name="showGender"
               checked={isGenderVisible}
-              onChange={(e) => handleCheckboxChange(e.target.checked)}
+              onChange={(e) => handleChange(e.target.checked, 'showGender')}
             />
           )}
           {infoText.text}
@@ -219,12 +229,22 @@ export const Signup = () => {
           {currentNextButtonText}
         </button>
 
-        <ConfirmModal
-          username={data.name}
-          isOpen={isConfirmModalOpen}
-          onConfirm={handleConfirm}
-          onClose={handleCancel}
-        />
+        {isConfirmModalOpen &&
+          <ConfirmModal
+            username={data.firstname}
+            isOpen={isConfirmModalOpen}
+            onConfirm={handleConfirm}
+            onClose={handleCancel}
+          />
+        }
+
+        {isFinishModalOpen &&
+          <FinishModal
+            isOpen={isFinishModalOpen}
+            onConfirm={handleFinish}
+            onClose={handleCancel}
+          />
+        }
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import { Modal } from '../../components/Modal'
-import styles from './ConfirmModal.module.scss'
+import styles from './Modal.module.scss'
 import hand_wave from '/img/hand_wave.png'
 
 type ConfirmModalPropsType = {

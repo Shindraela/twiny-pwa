@@ -5,7 +5,7 @@ interface GenderProps {
   data: {
     gender: string
   }
-  handleChange: (value: string) => void
+  handleChange: (value: string, name: string) => void
 }
 
 type InputType = {
@@ -22,18 +22,17 @@ export const Gender = ({ data, handleChange }: GenderProps) => {
   ]
 
   return (
-    <div className={styles.Gender}>
+    <div className={styles.Choices}>
       <h2 className={styles.SignupStepTitle}>Tu es ... ?</h2>
 
-      <div className={styles.GenderOptions}>
+      <div className={styles.ChoicesOptions}>
         {genders.map((gender, i) => (
           <Fragment key={i}>
             <button
               type="button"
-              className={`${styles.GenderInput} ${
-                data.gender === gender.value ? styles.GenderInputSelected : ''
-              }`}
-              onClick={() => handleChange(gender.value)}
+              className={`${styles.ChoicesInput} ${data.gender === gender.value ? styles.ChoicesInputSelected : ''
+                }`}
+              onClick={() => handleChange(gender.value, 'gender')}
             >
               {gender.value}
             </button>

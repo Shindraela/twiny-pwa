@@ -1,14 +1,21 @@
-import type React from 'react'
+import { useState } from 'react'
 import styles from '../Signup.module.scss'
 
 interface FirstnameProps {
   data: {
-    name: string
+    firstname: string
   }
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handleChange: (value: string, name: string) => void
 }
 
 export const Firstname = ({ data, handleChange }: FirstnameProps) => {
+  const [currentFirstname, setCurrentFirstname] = useState<string>('')
+
+  const handleFirstnameChange = (value: string) => {
+    setCurrentFirstname(value)
+    handleChange(value, 'firstname')
+  }
+
   return (
     <div className={styles.Firstname}>
       <h2 className={styles.SignupStepTitle}>Quel est ton prénom ?</h2>
@@ -17,8 +24,8 @@ export const Firstname = ({ data, handleChange }: FirstnameProps) => {
         className={styles.FirstnameInput}
         placeholder="Ton prénom"
         name="name"
-        value={data.name}
-        onChange={handleChange}
+        value={currentFirstname}
+        onChange={(event) => handleFirstnameChange(event.target.value)}
       />
 
       <p className={styles.SignupStepText}>
